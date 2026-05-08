@@ -226,6 +226,15 @@ footer span { color: var(--gold); }
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.visible { opacity: 1; transform: none; }
 
+/* ADMIN MODE */
+.cert-toolbar { display: none; }
+.cert-delete { display: none; }
+body.admin-unlocked .cert-toolbar { display: flex; }
+body.admin-unlocked .cert-delete { display: inline-block; }
+.admin-lock-btn { background: none; border: 1px solid var(--border); border-radius: 4px; color: var(--text-dim); font-family: var(--font-tech); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; cursor: none; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+.admin-lock-btn:hover { border-color: var(--border-blue); color: var(--blue); }
+.admin-lock-btn.unlocked { border-color: var(--border-gold); color: var(--gold); }
+
 /* PRINT */
 @media print {
   canvas, #cursor, #cursor-ring, .nebula, nav, .hero-cta, .cert-toolbar, .cert-delete, .modal-overlay, .hero-orbit, .profile-photo-orbit, .profile-photo-orbit2 { display: none !important; }
@@ -601,6 +610,7 @@ footer span { color: var(--gold); }
     <span class="section-num">05</span>
     <h2 class="section-title">CERTIFICATIONS</h2>
     <div class="section-line"></div>
+    <button class="admin-lock-btn" id="adminLockBtn" onclick="toggleAdmin()" title="Admin access">&#128274; Admin</button>
   </div>
   <div class="cert-toolbar fade-in">
     <button class="btn btn-primary" onclick="openAddModal()">+ Add Certification</button>
@@ -826,6 +836,35 @@ function deleteCert(id) {
   if (!confirm('Remove this certification?')) return;
   saveCerts(loadCerts().filter(c => c.id !== id));
   renderCerts();
+}
+
+function toggleAdmin() {
+  const btn = document.getElementById('adminLockBtn');
+  if (document.body.classList.contains('admin-unlocked')) {
+    document.body.classList.remove('admin-unlocked');
+    btn.innerHTML = '&#128274; Admin';
+    btn.classList.remove('unlocked');
+    return;
+  }
+  const pass = prompt('Enter admin password:');
+  if (!pass) return;
+  // sha256 of password checked client-side
+  sha256(pass).then(hash => {
+    if (hash === '7bfae97501cf04a79a016ca9802d90a8987e95e09bd0463ab09d8de51e2a9893') {
+      document.body.classList.add('admin-unlocked');
+      btn.innerHTML = '&#128275; Admin';
+      btn.classList.add('unlocked');
+    } else {
+      alert('Incorrect password.');
+    }
+  });
+}
+
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 function openAddModal() {
