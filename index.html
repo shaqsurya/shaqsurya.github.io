@@ -163,6 +163,12 @@
   footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; }
   footer span { color: var(--amber); }
 
+
+  .profile-photo-wrap { text-align: center; margin-bottom: 1.75rem; }
+  .profile-photo { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid var(--amber); display: block; margin: 0 auto; box-shadow: 0 0 0 6px rgba(245,166,35,0.12); }
+  .cert-download { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.5rem; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border-amber); border-radius: 2px; background: var(--amber-glow); transition: background 0.2s; }
+  .cert-download:hover { background: rgba(245,166,35,0.2); }
+
   .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
@@ -252,6 +258,9 @@
       <p>I pioneered an <strong>industry-first role-play based supplier behavioral change approach</strong> and spearheaded global Technical Cleanliness deployment outside core scope. <strong>MBA graduate at 93.74%</strong>, combining engineering precision with strategic quality leadership.</p>
     </div>
     <div class="about-details">
+      <div class="profile-photo-wrap">
+        <img src="assets/profile.png" alt="Shaquile Surya" class="profile-photo">
+      </div>
       <div class="detail-row">
         <div class="detail-icon">&#127758;</div>
         <div>
@@ -627,16 +636,15 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const STORE_KEY = 'shaquile_certs_v2';
+const STORE_KEY = 'shaquile_certs_v3';
 
 function getDefaultCerts() {
   return [
-    { id: 1, name: 'VDA 6.3 Qualified Auditor', issuer: 'VDA QMC', date: '2025', expiry: '', credId: '' },
-    { id: 2, name: 'Automotive Core Tools (APQP, PPAP, PFMEA, SPC, MSA)', issuer: 'VDA QMC', date: '2025', expiry: '', credId: '' },
-    { id: 3, name: 'VDA 2 Production Process and Product Approval (PPA)', issuer: 'VDA QMC', date: '2024', expiry: '', credId: '' },
-    { id: 4, name: 'IATF 16949 Qualification for 1st and 2nd Party Auditor', issuer: 'VDA QMC', date: '2024', expiry: '', credId: '' },
-    { id: 5, name: 'Powerful Presentation Skills (Best Presenter Award)', issuer: 'Infineon Technologies', date: '2023', expiry: '', credId: '' },
-    { id: 6, name: 'Problem Solving Essentials, Yellow Belt, 8D, FMEA, SPC', issuer: 'Infineon Technologies', date: '2022-2023', expiry: '', credId: '' }
+    { id: 1, name: 'VDA 6.3:2023 Process Auditor Qualification', issuer: 'VDA QMC (via QFD Group)', date: 'Jul 2025', expiry: '', credId: '', pdf: 'certs/vda63-process-auditor.pdf' },
+    { id: 2, name: 'Automotive Core Tools for Process and System Auditors', issuer: 'VDA QMC (via QFD Group)', date: 'Mar 2025', expiry: '', credId: '', pdf: 'certs/automotive-core-tools.pdf' },
+    { id: 3, name: 'VDA 2 Production Process and Product Approval (PPA)', issuer: 'VDA QMC (via QFD Group)', date: 'Nov 2024', expiry: '', credId: '', pdf: 'certs/vda2-ppa.pdf' },
+    { id: 4, name: 'IATF 16949 1st/2nd Party Auditor Qualification', issuer: 'VDA QMC (via QFD Group)', date: 'Sep 2024', expiry: '', credId: '', pdf: 'certs/iatf16949-auditor.pdf' },
+    { id: 5, name: 'Problem Solving Essentials - T6s and 8D Basics', issuer: 'Infineon Technologies', date: 'May 2023', expiry: '', credId: '', pdf: 'certs/t6s-8d-yellow-belt.pdf' }
   ];
 }
 
@@ -679,6 +687,7 @@ function renderCerts() {
         ${c.expiry ? '<span>Expiry: ' + esc(c.expiry) + '</span>' : ''}
       </div>
       ${c.credId ? '<div class="cert-id">ID: ' + esc(c.credId) + '</div>' : ''}
+      ${c.pdf ? '<a class="cert-download" href="' + c.pdf + '" target="_blank">&#8595; View Certificate</a>' : ''}
     </div>
   `).join('');
 }
