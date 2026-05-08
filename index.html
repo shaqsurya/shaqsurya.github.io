@@ -5,202 +5,262 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shaquile Surya | Supplier Quality Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0d0e;
-    --bg2: #141416;
-    --bg3: #1a1a1d;
-    --amber: #f5a623;
-    --amber-dim: #c17d10;
-    --amber-glow: rgba(245,166,35,0.10);
-    --text: #e8e4dc;
-    --text-muted: #888580;
-    --text-dim: #555250;
-    --border: rgba(255,255,255,0.07);
-    --border-amber: rgba(245,166,35,0.25);
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--amber-dim); border-radius: 2px; }
+:root {
+  --bg: #03050f;
+  --bg2: #070c1a;
+  --bg3: #0d1528;
+  --bg-glass: rgba(7,12,26,0.7);
+  --gold: #fbbf24;
+  --gold-dim: #d97706;
+  --gold-glow: rgba(251,191,36,0.12);
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96,165,250,0.12);
+  --purple: #a855f7;
+  --cyan: #22d3ee;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #475569;
+  --border: rgba(255,255,255,0.05);
+  --border-gold: rgba(251,191,36,0.2);
+  --border-blue: rgba(96,165,250,0.2);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-tech: 'Exo 2', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; cursor: none; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--blue-dim), var(--purple)); border-radius: 2px; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(13,13,14,0.88); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: var(--font-mono); font-size: 13px; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--amber); }
+/* CANVAS STARFIELD */
+#starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-  #hero {
-    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-    padding: 8rem 2rem 4rem; max-width: 1200px; margin: 0 auto; position: relative;
-  }
-  .hero-tag { font-family: var(--font-mono); font-size: 12px; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-  .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--amber); }
-  .hero-name { font-family: var(--font-display); font-size: clamp(5rem, 12vw, 10rem); line-height: 0.9; letter-spacing: 0.02em; color: var(--text); margin-bottom: 0.5rem; }
-  .hero-name span { color: var(--amber); }
-  .hero-subtitle { font-size: 13px; font-family: var(--font-mono); color: var(--text-dim); letter-spacing: 0.08em; margin-bottom: 0.9rem; }
-  .hero-title { font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: var(--text-muted); font-weight: 300; letter-spacing: 0.01em; margin-bottom: 2.5rem; max-width: 680px; line-height: 1.85; }
-  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem; }
-  .stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
-  .stat-num { font-family: var(--font-display); font-size: 2.5rem; color: var(--amber); line-height: 1; }
-  .stat-label { font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn { padding: 0.75rem 1.75rem; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer; border: none; display: inline-block; }
-  .btn-primary { background: var(--amber); color: var(--bg); font-weight: 600; }
-  .btn-primary:hover { background: #ffb733; }
-  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border-amber); }
-  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
-  .hero-grid-bg { position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to left, rgba(0,0,0,0.3), transparent); pointer-events: none; }
+/* NEBULA BLOBS */
+.nebula { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+.nebula-1 { width: 700px; height: 700px; top: -200px; right: -150px; background: radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%); }
+.nebula-2 { width: 600px; height: 600px; bottom: 100px; left: -150px; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%); }
+.nebula-3 { width: 400px; height: 400px; top: 50%; right: 10%; background: radial-gradient(circle, rgba(6,182,212,0.04) 0%, transparent 70%); }
 
-  section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
-  .section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
-  .section-num { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: 0.15em; }
-  .section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.03em; line-height: 1; }
-  .section-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--border-amber), transparent); }
-  .section-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--border-amber), transparent); margin: 0 auto; }
+/* CUSTOM CURSOR */
+#cursor { position: fixed; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s, width 0.2s, height 0.2s, opacity 0.2s; box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(251,191,36,0.4); }
+#cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(251,191,36,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.12s ease-out, width 0.2s, height 0.2s; }
+body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 20px; height: 20px; }
 
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .about-text { font-size: 1.02rem; color: var(--text-muted); line-height: 1.9; }
-  .about-text strong { color: var(--text); font-weight: 500; }
-  .about-text p + p { margin-top: 1rem; }
-  .about-details { display: flex; flex-direction: column; gap: 0.85rem; }
-  .detail-row { display: flex; gap: 1rem; padding: 0.85rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; align-items: center; }
-  .detail-icon { width: 34px; height: 34px; flex-shrink: 0; background: var(--amber-glow); border: 1px solid var(--border-amber); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-  .detail-key { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
-  .detail-val { font-size: 13px; color: var(--text); font-weight: 400; }
+/* All content above canvas */
+nav, #hero, section, footer, .modal-overlay { position: relative; z-index: 1; }
 
-  .timeline { display: flex; flex-direction: column; }
-  .timeline-item { display: grid; grid-template-columns: 190px 1fr; gap: 2rem; position: relative; padding-bottom: 3rem; }
-  .timeline-item:not(:last-child)::after { content: ''; position: absolute; left: 189px; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--amber-dim), transparent); }
-  .timeline-date { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em; padding-top: 3px; text-align: right; line-height: 1.7; }
-  .timeline-dot { position: absolute; left: 182px; top: 6px; width: 16px; height: 16px; background: var(--bg3); border: 2px solid var(--amber); border-radius: 50%; }
-  .timeline-content { padding-left: 1.5rem; }
-  .timeline-role { font-family: var(--font-display); font-size: 1.55rem; letter-spacing: 0.03em; color: var(--text); line-height: 1.1; margin-bottom: 0.25rem; }
-  .timeline-company { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .timeline-scope { font-size: 12px; color: var(--text-dim); font-style: italic; margin-bottom: 0.85rem; line-height: 1.6; }
-  .timeline-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; margin-bottom: 0.75rem; padding-left: 1rem; }
-  .timeline-desc li { margin-bottom: 0.3rem; }
-  .achievements { margin-top: 1rem; padding: 1rem 1.25rem; background: var(--amber-glow); border: 1px solid var(--border-amber); border-radius: 4px; }
-  .achievements-title { font-family: var(--font-mono); font-size: 10px; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; }
-  .achievements ul { padding-left: 1rem; }
-  .achievements li { font-size: 12px; color: var(--text-muted); margin-bottom: 0.35rem; line-height: 1.7; }
-  .achievements li strong { color: var(--amber); font-weight: 500; }
-  .timeline-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-  .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; background: var(--bg3); border: 1px solid var(--border); color: var(--text-dim); }
-  .tag-amber { border-color: var(--border-amber); color: var(--amber); background: var(--amber-glow); }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(3,5,15,0.8); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.3s;
+}
+nav.scrolled { border-bottom-color: rgba(96,165,250,0.15); }
+.nav-logo { font-family: var(--font-tech); font-size: 13px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 12px; font-family: var(--font-tech); color: var(--text-muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; font-weight: 400; }
+.nav-links a:hover { color: var(--blue); }
 
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-  .skill-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; transition: border-color 0.2s; }
-  .skill-card:hover { border-color: var(--border-amber); }
-  .skill-card-title { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
-  .skill-list { display: flex; flex-direction: column; gap: 0.65rem; }
-  .skill-item { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--text-muted); gap: 0.5rem; }
-  .skill-bar-wrap { width: 80px; min-width: 80px; height: 3px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
-  .skill-bar { height: 100%; background: var(--amber); border-radius: 2px; }
+/* HERO */
+#hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 2rem 4rem; max-width: 1200px; margin: 0 auto;
+}
+.hero-tag { font-family: var(--font-tech); font-size: 11px; color: var(--cyan); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
+.hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: linear-gradient(to right, var(--blue), var(--cyan)); }
+.hero-name { font-family: var(--font-display); font-size: clamp(5rem, 11vw, 9.5rem); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+.hero-name .line1 { display: block; color: var(--text); }
+.hero-name .line2 { display: block; background: linear-gradient(135deg, var(--gold) 0%, var(--blue) 60%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { font-size: 13px; font-family: var(--font-tech); color: var(--text-dim); letter-spacing: 0.08em; margin-bottom: 1rem; }
+.hero-title { font-size: clamp(0.9rem, 1.6vw, 1.05rem); color: var(--text-muted); font-weight: 300; margin-bottom: 2.5rem; max-width: 620px; line-height: 1.9; }
+.hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num { font-family: var(--font-display); font-size: 2.5rem; line-height: 1; background: linear-gradient(135deg, var(--gold), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-label { font-size: 10px; font-family: var(--font-tech); color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { padding: 0.75rem 1.75rem; font-family: var(--font-tech); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: all 0.25s; cursor: none; border: none; display: inline-block; font-weight: 500; }
+.btn-primary { background: linear-gradient(135deg, var(--gold-dim), var(--gold)); color: var(--bg); font-weight: 600; box-shadow: 0 0 20px rgba(251,191,36,0.2); }
+.btn-primary:hover { box-shadow: 0 0 30px rgba(251,191,36,0.4); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border-blue); }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); box-shadow: 0 0 15px rgba(96,165,250,0.15); transform: translateY(-1px); }
 
-  .lang-grid { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-  .lang-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.75rem; flex: 1; min-width: 180px; transition: border-color 0.2s; }
-  .lang-card:hover { border-color: var(--border-amber); }
-  .lang-name { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
-  .lang-level { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; }
+/* ORBIT DECORATION IN HERO */
+.hero-orbit { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); pointer-events: none; opacity: 0.35; }
+@keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes orbit-spin-r { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+.orbit-ring-1 { animation: orbit-spin 20s linear infinite; transform-origin: center; }
+.orbit-ring-2 { animation: orbit-spin-r 14s linear infinite; transform-origin: center; }
+.orbit-ring-3 { animation: orbit-spin 30s linear infinite; transform-origin: center; }
 
-  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-  .edu-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem; position: relative; overflow: hidden; transition: border-color 0.2s; }
-  .edu-card:hover { border-color: var(--border-amber); }
-  .edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); }
-  .edu-degree { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; margin-bottom: 0.3rem; }
-  .edu-school { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
-  .edu-year { font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); margin-bottom: 0.5rem; }
-  .edu-score { font-size: 13px; color: var(--text-muted); }
-  .edu-score strong { color: var(--amber); }
-  .edu-badge { display: inline-block; margin-top: 0.75rem; padding: 3px 10px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--amber-glow); border: 1px solid var(--border-amber); color: var(--amber); border-radius: 2px; }
+/* SECTIONS */
+section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+.section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
+.section-num { font-family: var(--font-tech); font-size: 11px; color: var(--blue); letter-spacing: 0.2em; font-weight: 500; }
+.section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.03em; line-height: 1; }
+.section-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--border-blue), transparent); }
+.section-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(96,165,250,0.15), transparent); }
 
-  .cert-toolbar { display: flex; justify-content: flex-end; margin-bottom: 1.5rem; }
-  .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
-  .cert-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; transition: border-color 0.2s; }
-  .cert-card:hover { border-color: var(--border-amber); }
-  .cert-card-top { display: flex; align-items: flex-start; justify-content: space-between; }
-  .cert-name { font-weight: 500; font-size: 14px; color: var(--text); line-height: 1.4; flex: 1; }
-  .cert-delete { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 18px; line-height: 1; padding: 0; margin-left: 0.5rem; transition: color 0.2s; flex-shrink: 0; }
-  .cert-delete:hover { color: #e24b4a; }
-  .cert-issuer { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: 0.08em; }
-  .cert-meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); }
-  .cert-id { font-size: 11px; color: var(--text-dim); font-family: var(--font-mono); }
-  .cert-empty { grid-column: 1 / -1; text-align: center; padding: 3rem; border: 1px dashed var(--border-amber); border-radius: 4px; color: var(--text-dim); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; }
+/* GLASS CARD */
+.glass { background: var(--bg-glass); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 8px; transition: border-color 0.3s, box-shadow 0.3s; }
+.glass:hover { border-color: var(--border-blue); box-shadow: 0 0 25px rgba(96,165,250,0.06), inset 0 0 25px rgba(96,165,250,0.02); }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.82); align-items: center; justify-content: center; }
-  .modal-overlay.active { display: flex; }
-  .modal { background: var(--bg2); border: 1px solid var(--border-amber); border-radius: 6px; padding: 2rem; width: 100%; max-width: 480px; margin: 1rem; }
-  .modal-title { font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.03em; margin-bottom: 1.5rem; color: var(--text); }
-  .form-group { margin-bottom: 1rem; }
-  .form-label { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.4rem; }
-  .form-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; padding: 0.6rem 0.9rem; color: var(--text); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; }
-  .form-input:focus { border-color: var(--amber); }
-  .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; }
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.95; }
+.about-text strong { color: var(--text); font-weight: 500; }
+.about-text p + p { margin-top: 1.1rem; }
+.about-details { display: flex; flex-direction: column; gap: 0.8rem; }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-  .contact-intro { font-size: 1.02rem; color: var(--text-muted); line-height: 1.9; }
-  .contact-intro strong { color: var(--text); }
-  .contact-intro p + p { margin-top: 1rem; }
-  .contact-badge { display: inline-block; margin-top: 1rem; padding: 4px 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--amber-glow); border: 1px solid var(--border-amber); color: var(--amber); border-radius: 2px; }
-  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-  .contact-link { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: var(--text); font-size: 14px; transition: border-color 0.2s, color 0.2s; word-break: break-all; }
-  .contact-link:hover { border-color: var(--border-amber); color: var(--amber); }
-  .contact-link-icon { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
+/* PROFILE PHOTO */
+.profile-photo-wrap { text-align: center; margin-bottom: 1.75rem; position: relative; display: inline-block; width: 100%; }
+.profile-photo-orbit { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 210px; height: 210px; border-radius: 50%; border: 1px dashed rgba(96,165,250,0.3); animation: orbit-spin 12s linear infinite; }
+.profile-photo-orbit::after { content: ''; position: absolute; width: 8px; height: 8px; background: var(--blue); border-radius: 50%; top: -4px; left: 50%; margin-left: -4px; box-shadow: 0 0 8px var(--blue), 0 0 16px rgba(96,165,250,0.5); }
+.profile-photo-orbit2 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 195px; height: 195px; border-radius: 50%; border: 1px dashed rgba(251,191,36,0.2); animation: orbit-spin-r 18s linear infinite; }
+.profile-photo-orbit2::after { content: ''; position: absolute; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; bottom: -3px; left: 50%; margin-left: -3px; box-shadow: 0 0 6px var(--gold); }
+.profile-photo { width: 165px; height: 165px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(251,191,36,0.4); display: block; margin: 0 auto; box-shadow: 0 0 0 8px rgba(251,191,36,0.05), 0 0 40px rgba(251,191,36,0.1); position: relative; z-index: 1; }
 
-  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; }
-  footer span { color: var(--amber); }
+.detail-row { display: flex; gap: 1rem; padding: 0.8rem 1.1rem; align-items: center; }
+.detail-icon { width: 32px; height: 32px; flex-shrink: 0; background: var(--blue-glow); border: 1px solid var(--border-blue); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.detail-key { font-family: var(--font-tech); font-size: 10px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px; }
+.detail-val { font-size: 13px; color: var(--text); font-weight: 400; }
 
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; }
+.timeline-item { display: grid; grid-template-columns: 190px 1fr; gap: 2rem; position: relative; padding-bottom: 3rem; }
+.timeline-item:not(:last-child)::after { content: ''; position: absolute; left: 189px; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--blue-dim), transparent); }
+.timeline-date { font-family: var(--font-tech); font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em; padding-top: 3px; text-align: right; line-height: 1.7; }
+.timeline-dot { position: absolute; left: 182px; top: 4px; width: 16px; height: 16px; background: var(--bg2); border: 2px solid var(--blue); border-radius: 50%; box-shadow: 0 0 8px rgba(96,165,250,0.5), 0 0 16px rgba(96,165,250,0.2); }
+.timeline-content { padding-left: 1.5rem; }
+.timeline-role { font-family: var(--font-display); font-size: 1.55rem; letter-spacing: 0.03em; color: var(--text); line-height: 1.1; margin-bottom: 0.25rem; }
+.timeline-company { font-family: var(--font-tech); font-size: 11px; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; font-weight: 500; }
+.timeline-scope { font-size: 12px; color: var(--text-dim); font-style: italic; margin-bottom: 0.85rem; line-height: 1.6; }
+.timeline-desc { font-size: 13px; color: var(--text-muted); line-height: 1.85; margin-bottom: 0.75rem; padding-left: 1rem; }
+.timeline-desc li { margin-bottom: 0.35rem; }
+.achievements { margin-top: 1rem; padding: 1rem 1.25rem; background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.15); border-radius: 6px; }
+.achievements-title { font-family: var(--font-tech); font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 600; }
+.achievements ul { padding-left: 1rem; }
+.achievements li { font-size: 12px; color: var(--text-muted); margin-bottom: 0.35rem; line-height: 1.75; }
+.achievements li strong { color: var(--gold); font-weight: 500; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag { font-family: var(--font-tech); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--text-dim); }
+.tag-blue { border-color: var(--border-blue); color: var(--blue); background: var(--blue-glow); }
+.tag-gold { border-color: var(--border-gold); color: var(--gold); background: var(--gold-glow); }
 
-  .profile-photo-wrap { text-align: center; margin-bottom: 1.75rem; }
-  .profile-photo { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid var(--amber); display: block; margin: 0 auto; box-shadow: 0 0 0 6px rgba(245,166,35,0.12); }
-  .cert-download { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.5rem; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border-amber); border-radius: 2px; background: var(--amber-glow); transition: background 0.2s; }
-  .cert-download:hover { background: rgba(245,166,35,0.2); }
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.skill-card-title { font-family: var(--font-tech); font-size: 11px; color: var(--blue); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.1rem; font-weight: 600; }
+.skill-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.skill-item { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--text-muted); gap: 0.5rem; }
+.skill-bar-wrap { width: 90px; min-width: 90px; height: 3px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
+.skill-bar { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--blue-dim), var(--cyan)); box-shadow: 0 0 6px rgba(96,165,250,0.4); width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.skill-bar.animate { width: var(--w); }
 
-  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .fade-in.visible { opacity: 1; transform: none; }
+/* LANGUAGES */
+.lang-grid { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.lang-card { padding: 1.25rem 1.75rem; flex: 1; min-width: 180px; }
+.lang-name { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
+.lang-level { font-family: var(--font-tech); font-size: 11px; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
 
-  @media print {
-    nav, .hero-cta, .cert-toolbar, .cert-delete, .modal-overlay, .hero-grid-bg { display: none !important; }
-    body { background: white; color: #111; font-size: 12px; }
-    .hero-name, .section-title, .timeline-role, .edu-degree, .lang-name { color: #111; }
-    .hero-tag, .section-num, .timeline-company, .edu-school, .cert-issuer, .lang-level, .achievements-title { color: #b07010; }
-    .hero-title, .about-text, .timeline-desc, .timeline-scope, .cert-meta, .contact-intro, .achievements li { color: #444; }
-    section { padding: 2rem 0; }
-    .detail-row, .skill-card, .edu-card, .cert-card, .contact-link, .lang-card { background: #f7f7f7; border-color: #ddd; }
-    .achievements { background: #fff9ee; border-color: #b07010; }
-    .tag { background: #eee; color: #555; border-color: #ccc; }
-    .tag-amber { color: #b07010; border-color: #b07010; background: #fff9ee; }
-  }
+/* EDUCATION */
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.edu-card { padding: 1.75rem; position: relative; overflow: hidden; }
+.edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--blue-dim), var(--purple)); }
+.edu-degree { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; margin-bottom: 0.3rem; }
+.edu-school { font-family: var(--font-tech); font-size: 11px; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 500; }
+.edu-year { font-size: 12px; color: var(--text-dim); font-family: var(--font-tech); margin-bottom: 0.5rem; }
+.edu-score { font-size: 13px; color: var(--text-muted); }
+.edu-score strong { color: var(--gold); }
+.edu-badge { display: inline-block; margin-top: 0.75rem; padding: 3px 10px; font-family: var(--font-tech); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold); border-radius: 3px; font-weight: 500; }
 
-  @media (max-width: 768px) {
-    .about-grid, .contact-grid { grid-template-columns: 1fr; }
-    .timeline-item { grid-template-columns: 1fr; }
-    .timeline-item::after { display: none; }
-    .timeline-dot { display: none; }
-    .timeline-date { text-align: left; font-size: 12px; }
-    .timeline-content { padding-left: 0; }
-    .hero-stats { gap: 1.5rem; }
-    .nav-links { display: none; }
-  }
+/* CERTIFICATIONS */
+.cert-toolbar { display: flex; justify-content: flex-end; margin-bottom: 1.5rem; }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.cert-card { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; position: relative; overflow: hidden; }
+.cert-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--border-blue), transparent); }
+.cert-card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+.cert-name { font-weight: 500; font-size: 14px; color: var(--text); line-height: 1.4; flex: 1; }
+.cert-delete { background: none; border: none; color: var(--text-dim); cursor: none; font-size: 18px; line-height: 1; padding: 0; margin-left: 0.5rem; transition: color 0.2s; flex-shrink: 0; }
+.cert-delete:hover { color: #f87171; }
+.cert-issuer { font-family: var(--font-tech); font-size: 11px; color: var(--blue); letter-spacing: 0.08em; font-weight: 500; }
+.cert-meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 12px; color: var(--text-dim); font-family: var(--font-tech); }
+.cert-id { font-size: 11px; color: var(--text-dim); font-family: var(--font-tech); }
+.cert-download { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.5rem; font-family: var(--font-tech); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border-gold); border-radius: 3px; background: var(--gold-glow); transition: all 0.2s; font-weight: 500; width: fit-content; }
+.cert-download:hover { background: rgba(251,191,36,0.2); box-shadow: 0 0 10px rgba(251,191,36,0.15); }
+.cert-empty { grid-column: 1/-1; text-align: center; padding: 3rem; border: 1px dashed var(--border-blue); border-radius: 8px; color: var(--text-dim); font-family: var(--font-tech); font-size: 12px; letter-spacing: 0.12em; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+.modal-overlay.active { display: flex; }
+.modal { background: var(--bg2); border: 1px solid var(--border-blue); border-radius: 10px; padding: 2rem; width: 100%; max-width: 480px; margin: 1rem; box-shadow: 0 0 40px rgba(96,165,250,0.1); }
+.modal-title { font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.03em; margin-bottom: 1.5rem; color: var(--text); }
+.form-group { margin-bottom: 1rem; }
+.form-label { display: block; font-family: var(--font-tech); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.4rem; }
+.form-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 0.65rem 0.9rem; color: var(--text); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.form-input:focus { border-color: var(--blue-dim); box-shadow: 0 0 0 3px rgba(96,165,250,0.1); }
+.modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.contact-intro { font-size: 1rem; color: var(--text-muted); line-height: 1.95; }
+.contact-intro strong { color: var(--text); }
+.contact-intro p + p { margin-top: 1rem; }
+.contact-badge { display: inline-block; margin-top: 1rem; padding: 4px 12px; font-family: var(--font-tech); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold); border-radius: 3px; font-weight: 500; }
+.contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-link { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.25rem; text-decoration: none; color: var(--text); font-size: 14px; transition: all 0.25s; word-break: break-all; }
+.contact-link:hover { color: var(--blue); box-shadow: 0 0 20px rgba(96,165,250,0.08); }
+.contact-link-icon { font-size: 15px; width: 24px; text-align: center; flex-shrink: 0; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: var(--font-tech); font-size: 11px; color: var(--text-dim); letter-spacing: 0.12em; position: relative; z-index: 1; }
+footer span { color: var(--gold); }
+
+/* FADE IN */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* PRINT */
+@media print {
+  canvas, #cursor, #cursor-ring, .nebula, nav, .hero-cta, .cert-toolbar, .cert-delete, .modal-overlay, .hero-orbit, .profile-photo-orbit, .profile-photo-orbit2 { display: none !important; }
+  body { background: white; color: #111; cursor: auto; }
+  .hero-name .line1, .hero-name .line2, .section-title, .timeline-role, .edu-degree, .lang-name { color: #111 !important; -webkit-text-fill-color: #111 !important; }
+  .glass { background: #f7f9fc; border-color: #dde; box-shadow: none; }
+  .achievements { background: #fff9ee; border-color: #c17d10; }
+}
+
+@media (max-width: 768px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; }
+  .timeline-item::after { display: none; }
+  .timeline-dot { display: none; }
+  .timeline-date { text-align: left; }
+  .timeline-content { padding-left: 0; }
+  .hero-stats { gap: 1.5rem; }
+  .nav-links { display: none; }
+  .hero-orbit { display: none; }
+  body { cursor: auto; }
+  #cursor, #cursor-ring { display: none; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">SS &mdash; Portfolio</div>
+<canvas id="starfield"></canvas>
+<div class="nebula nebula-1"></div>
+<div class="nebula nebula-2"></div>
+<div class="nebula nebula-3"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav id="navbar">
+  <div class="nav-logo">&#9733; SS &mdash; Portfolio</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -211,29 +271,42 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <div id="hero">
-  <div class="hero-grid-bg"></div>
+  <!-- Orbit decoration -->
+  <div class="hero-orbit">
+    <svg width="340" height="340" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g class="orbit-ring-1">
+        <ellipse cx="170" cy="170" rx="155" ry="155" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="6 4"/>
+        <circle cx="170" cy="15" r="5" fill="#60a5fa" opacity="0.8"/>
+        <circle cx="170" cy="15" r="8" fill="rgba(96,165,250,0.2)"/>
+      </g>
+      <g class="orbit-ring-2">
+        <ellipse cx="170" cy="170" rx="110" ry="110" stroke="rgba(251,191,36,0.15)" stroke-width="1" stroke-dasharray="4 6"/>
+        <circle cx="170" cy="60" r="4" fill="#fbbf24" opacity="0.9"/>
+      </g>
+      <g class="orbit-ring-3">
+        <ellipse cx="170" cy="170" rx="65" ry="65" stroke="rgba(168,85,247,0.15)" stroke-width="1" stroke-dasharray="3 5"/>
+        <circle cx="235" cy="170" r="3" fill="#a855f7" opacity="0.8"/>
+      </g>
+      <circle cx="170" cy="170" r="18" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+      <circle cx="170" cy="170" r="10" fill="rgba(251,191,36,0.15)"/>
+      <circle cx="170" cy="170" r="5" fill="#fbbf24" opacity="0.6"/>
+    </svg>
+  </div>
+
   <div class="hero-tag">Supplier Quality Manager &bull; VDA 6.3 Qualified Auditor</div>
-  <h1 class="hero-name">SHAQUILE<br><span>SURYA</span></h1>
+  <h1 class="hero-name">
+    <span class="line1">SHAQUILE</span>
+    <span class="line2">SURYA</span>
+  </h1>
   <p class="hero-subtitle">Budapest, Hungary &nbsp;&bull;&nbsp; EU Blue Card Holder &nbsp;&bull;&nbsp; Open to Relocation within Europe</p>
   <p class="hero-title">VDA 6.3 Qualified Auditor and Supplier Quality Manager with 10 years of experience spanning semiconductor process engineering and automotive supply chain governance across 4 countries. MBA graduate (93.74%) and VP-recognized problem solver with a track record of zero FAR, zero line disturbances, double-digit audit score improvements, and pioneering industry-first supplier engagement methods.</p>
   <div class="hero-stats">
-    <div class="stat-item">
-      <span class="stat-num">10+</span>
-      <span class="stat-label">Years Experience</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">4</span>
-      <span class="stat-label">Countries Worked</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">93.7%</span>
-      <span class="stat-label">MBA Score</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">7x</span>
-      <span class="stat-label">SGA Champion</span>
-    </div>
+    <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Countries Worked</span></div>
+    <div class="stat-item"><span class="stat-num">93.7%</span><span class="stat-label">MBA Score</span></div>
+    <div class="stat-item"><span class="stat-num">7x</span><span class="stat-label">SGA Champion</span></div>
   </div>
   <div class="hero-cta">
     <a href="mailto:shaquile.surya@gmail.com" class="btn btn-primary">Get in Touch</a>
@@ -256,53 +329,37 @@
       <p>I am a <strong>VDA 6.3 Qualified Auditor and Supplier Quality Manager</strong> at Infineon Technologies Hungary, operating at the intersection of engineering precision and strategic supplier governance across semiconductor and automotive supply chains.</p>
       <p>I applied for and secured a role <strong>two grade levels above my current position</strong> to join Infineon Hungary &mdash; a cross-country, cross-functional leap validated entirely on merit. Within the first year, I delivered <strong>zero FAR, zero line disturbances</strong>, and double-digit VDA 6.3 audit score improvements.</p>
       <p>Beyond technical credentials, I am a <strong>deeply creative and unconventional thinker</strong>. I have a habit of building tools and approaches that colleagues initially find weird, doubt, or outright laugh at &mdash; only for them to actually work and drive real, measurable results. That mindset earned me <strong>7 consecutive SGA Championship awards</strong> at Excelitas, VP-level recognition, and an industry-first supplier engagement method at Infineon that nobody had tried before.</p>
-      <p>I was also the <strong>youngest engineer in company history to reach Engineer Grade II</strong> (promoted in just 1.5 years, 2018) and again the <strong>youngest to reach Engineer Grade III</strong> (2021) &mdash; achievements that speak to consistent performance under pressure, not just tenure. <strong>MBA graduate at 93.74%</strong>, combining engineering precision with strategic quality leadership.</p>
+      <p>I was also the <strong>youngest engineer in company history to reach Engineer Grade II</strong> (promoted in just 1.5 years, 2018) and again the <strong>youngest to reach Engineer Grade III</strong> (2021) &mdash; achievements built on consistent performance under pressure, not tenure. <strong>MBA graduate at 93.74%</strong>, combining engineering precision with strategic quality leadership.</p>
     </div>
     <div class="about-details">
       <div class="profile-photo-wrap">
+        <div class="profile-photo-orbit"></div>
+        <div class="profile-photo-orbit2"></div>
         <img src="assets/profile.png" alt="Shaquile Surya" class="profile-photo">
       </div>
-      <div class="detail-row">
+      <div class="detail-row glass">
         <div class="detail-icon">&#127758;</div>
-        <div>
-          <div class="detail-key">Location</div>
-          <div class="detail-val">Budapest, Hungary</div>
-        </div>
+        <div><div class="detail-key">Location</div><div class="detail-val">Budapest, Hungary</div></div>
       </div>
-      <div class="detail-row">
+      <div class="detail-row glass">
         <div class="detail-icon">&#128336;</div>
-        <div>
-          <div class="detail-key">Current Role</div>
-          <div class="detail-val">Supplier Quality Manager, Infineon Technologies</div>
-        </div>
+        <div><div class="detail-key">Current Role</div><div class="detail-val">Supplier Quality Manager, Infineon Technologies</div></div>
       </div>
-      <div class="detail-row">
+      <div class="detail-row glass">
         <div class="detail-icon">&#127891;</div>
-        <div>
-          <div class="detail-key">Education</div>
-          <div class="detail-val">MBA 93.74% &bull; B.Eng Mechatronics GPA 3.36</div>
-        </div>
+        <div><div class="detail-key">Education</div><div class="detail-val">MBA 93.74% &bull; B.Eng Mechatronics GPA 3.36</div></div>
       </div>
-      <div class="detail-row">
+      <div class="detail-row glass">
         <div class="detail-icon">&#128203;</div>
-        <div>
-          <div class="detail-key">Work Authorization</div>
-          <div class="detail-val">EU Blue Card &bull; Full EU Authorization</div>
-        </div>
+        <div><div class="detail-key">Work Authorization</div><div class="detail-val">EU Blue Card &bull; Full EU Authorization</div></div>
       </div>
-      <div class="detail-row">
+      <div class="detail-row glass">
         <div class="detail-icon">&#128172;</div>
-        <div>
-          <div class="detail-key">Languages</div>
-          <div class="detail-val">Indonesian (Native) &bull; English (Business Fluent) &bull; Hungarian (Learning)</div>
-        </div>
+        <div><div class="detail-key">Languages</div><div class="detail-val">Indonesian (Native) &bull; English (Business Fluent) &bull; Hungarian (Learning)</div></div>
       </div>
-      <div class="detail-row">
+      <div class="detail-row glass">
         <div class="detail-icon">&#127757;</div>
-        <div>
-          <div class="detail-key">Experience Span</div>
-          <div class="detail-val">Indonesia &bull; USA (Fremont, CA) &bull; Hungary</div>
-        </div>
+        <div><div class="detail-key">Experience Span</div><div class="detail-val">Indonesia &bull; USA (Fremont, CA) &bull; Hungary</div></div>
       </div>
     </div>
   </div>
@@ -330,26 +387,26 @@
           <li>Led supplier quality governance, audits, escalations, and supplier development across a 4-country supplier portfolio to protect production stability and customer deliveries.</li>
           <li>Drove cross-functional 8D containment and corrective actions; ensured preventive measures and lessons learned were fully implemented.</li>
           <li>Coordinated PPAP/PPA approvals, requalification, and new material releases aligned with VDA 2 and IATF 16949.</li>
-          <li>Spearheaded global Technical Cleanliness standards deployment for raw materials and packaging across international suppliers &mdash; a strategic initiative outside core scope, successfully delivered through cross-functional collaboration.</li>
+          <li>Spearheaded global Technical Cleanliness standards deployment for raw materials and packaging across international suppliers.</li>
           <li>Delivered Director-level quality governance presentations covering KPI scorecards, escalation status, and supplier performance reviews.</li>
-          <li>Conducted VDA 6.3 P1 Potential Analysis audit on new supplier candidate in Austria, successfully qualifying the site for consideration.</li>
+          <li>Conducted VDA 6.3 P1 Potential Analysis audit on new supplier candidate in Austria, successfully qualifying the site.</li>
         </ul>
         <div class="achievements">
           <div class="achievements-title">Key Achievements</div>
           <ul>
-            <li>Secured role <strong>2 grade levels above current position</strong> (Infineon GG10 to GG12, Senior Engineer to Manager level) &mdash; a cross-country, cross-functional leap validated entirely on merit.</li>
-            <li>Pioneered an <strong>industry-first role-play based supplier engagement method</strong>, driving measurable quality mindset improvement across key supplier accounts.</li>
+            <li>Secured role <strong>2 grade levels above current position</strong> (GG10 to GG12) in a cross-country, cross-functional leap validated entirely on merit.</li>
+            <li>Pioneered an <strong>industry-first role-play based supplier engagement method</strong> &mdash; laughed at initially, proven effective in driving measurable quality mindset shifts across key accounts.</li>
             <li>Closed <strong>9 incomplete mold SCARs with 85% resolution rate</strong>, reducing escalations via root cause analysis and supplier coaching.</li>
             <li>Achieved <strong>0 FAR and 0 line disturbances</strong> in FY23/24 portfolio (full production compliance).</li>
             <li>Achieved <strong>97% A-rating</strong> in VDA 6.3 audit for Gottlicher supplier (FY24/25) with zero delays.</li>
             <li>Improved Agrodur Germany VDA 6.3 P4-P6 audit score by <strong>9% to 90%</strong> through targeted corrective actions.</li>
-            <li>Achieved <strong>91% A-rating</strong> in VDA 6.3 P2-P4 audits at Possehl Germany and Czech Republic; boosted Czech site <strong>30% YoY</strong> in FY24/25.</li>
+            <li>Achieved <strong>91% A-rating</strong> in VDA 6.3 P2-P4 audits at Possehl; boosted Czech site <strong>30% YoY</strong> in FY24/25.</li>
           </ul>
         </div>
         <div class="timeline-tags">
-          <span class="tag tag-amber">VDA 6.3 Qualified Auditor</span>
-          <span class="tag tag-amber">VDA 2 / PPAP / PPA</span>
-          <span class="tag tag-amber">IATF 16949</span>
+          <span class="tag tag-blue">VDA 6.3 Qualified Auditor</span>
+          <span class="tag tag-blue">VDA 2 / PPAP / PPA</span>
+          <span class="tag tag-blue">IATF 16949</span>
           <span class="tag">SCAR Management</span>
           <span class="tag">8D / DMAIC</span>
           <span class="tag">Technical Cleanliness</span>
@@ -364,7 +421,7 @@
       <div class="timeline-content">
         <div class="timeline-role">Senior Unit Process Engineer</div>
         <div class="timeline-company">Infineon Technologies &bull; Indonesia</div>
-        <div class="timeline-scope">End of Line | Trim and Form, Laser Marking | Power Devices (DSO Packages) | Deliberate pivot into Supplier Quality Management</div>
+        <div class="timeline-scope">End of Line | Trim and Form, Laser Marking | Power Devices (DSO Packages)</div>
         <ul class="timeline-desc">
           <li>Owned and optimized end-of-line processes to meet yield targets, reduce defects, and resolve machine abnormalities.</li>
           <li>Led cross-functional RCA and corrective actions using DMAIC/8D; standardized processes to prevent recurrence.</li>
@@ -378,7 +435,7 @@
           </ul>
         </div>
         <div class="timeline-tags">
-          <span class="tag tag-amber">Process Engineering</span>
+          <span class="tag tag-blue">Process Engineering</span>
           <span class="tag">DMAIC / 8D</span>
           <span class="tag">Semiconductor Mfg.</span>
           <span class="tag">SPC / Cpk</span>
@@ -397,24 +454,23 @@
         <ul class="timeline-desc">
           <li>Managed critical end-to-end processes with yields up to 99%; halted production when requirements were not met.</li>
           <li>Led DMAIC evaluations and 5-Why RCA for high-priority defects; reduced failure modes through automation, jig optimization, and process standardization.</li>
-          <li>Led and mentored teams in defect management and issue resolution; partnered with Global R&D on device and material changes.</li>
-          <li>Built Excel-based monitoring tools to track yield and defect trends, enabling data-driven prioritization.</li>
+          <li>Built Excel-based monitoring tools that colleagues initially dismissed as too unconventional &mdash; only to become standard tracking references across the site.</li>
         </ul>
         <div class="achievements">
           <div class="achievements-title">Key Achievements</div>
           <ul>
-            <li><strong>Youngest in company history</strong> to be promoted from Engineer I to Engineer II in just 1.5 years (2018), and again youngest to reach Engineer III (2021).</li>
-            <li>Handpicked by management for <strong>international assignment in Fremont, CA</strong>; led full equipment transfer and qualification from California to Batam, delivering <strong>36,700 units in Q4 2019 &ndash; Q1 2020</strong>.</li>
-            <li>Reduced defects by up to <strong>85%</strong> across multiple devices through automation, jig optimization, and process improvements.</li>
-            <li>Maintained <strong>98% yield</strong> (target 95%); cut Y1916A defects by <strong>62%</strong>, saving approximately <strong>$60,000 annually</strong> &mdash; recognized at VP level.</li>
-            <li>Cut cycle times by approximately <strong>50%</strong> and eliminated non-value-added steps; delivered <strong>83% fewer splash issues and 54% fewer chip-off defects</strong>.</li>
-            <li>Championed <strong>7 consecutive DMAIC projects</strong> at Excelitas SGA Project Championship (2017&ndash;2021), winning 1 Bronze and 6 Silver awards &mdash; the only Engineer to champion all 7 competing projects site-wide.</li>
+            <li><strong>Youngest in company history</strong> to reach Engineer Grade II in just 1.5 years (2018), and again youngest to reach Engineer Grade III (2021).</li>
+            <li>Handpicked for <strong>international assignment in Fremont, CA</strong>; led full equipment transfer delivering <strong>36,700 units in Q4 2019 &ndash; Q1 2020</strong>.</li>
+            <li>Reduced defects by up to <strong>85%</strong> through automation, jig optimization, and unconventional process improvements.</li>
+            <li>Maintained <strong>98% yield</strong>; cut Y1916A defects by <strong>62%</strong>, saving ~<strong>$60,000 annually</strong> &mdash; recognized at VP level.</li>
+            <li>Cut cycle times by ~<strong>50%</strong>; delivered <strong>83% fewer splash issues and 54% fewer chip-off defects</strong>.</li>
+            <li>Championed <strong>7 consecutive DMAIC projects</strong> at SGA Championship (2017&ndash;2021), winning 1 Bronze and 6 Silver &mdash; the only Engineer to champion all 7 site-wide competing projects.</li>
           </ul>
         </div>
         <div class="timeline-tags">
-          <span class="tag tag-amber">7x SGA Champion</span>
-          <span class="tag tag-amber">Int'l Assignment USA</span>
-          <span class="tag">Photonics Mfg.</span>
+          <span class="tag tag-gold">7x SGA Champion</span>
+          <span class="tag tag-gold">Youngest Eng. Grade III</span>
+          <span class="tag tag-blue">Int'l Assignment USA</span>
           <span class="tag">DMAIC / 5-Why</span>
           <span class="tag">Lean / Kaizen</span>
           <span class="tag">Defect Reduction</span>
@@ -432,11 +488,7 @@
           <li>Managed NPI quality activities from Design Introduction to Mass Production; coordinated audits and issue resolution.</li>
           <li>Developed and trained operators for NPI stability; achieved 90% yield target.</li>
         </ul>
-        <div class="timeline-tags">
-          <span class="tag">NPI Quality</span>
-          <span class="tag">Audit Coordination</span>
-          <span class="tag">Operator Training</span>
-        </div>
+        <div class="timeline-tags"><span class="tag">NPI Quality</span><span class="tag">Audit Coordination</span><span class="tag">Operator Training</span></div>
       </div>
     </div>
 
@@ -449,13 +501,9 @@
         <ul class="timeline-desc">
           <li>Analyzed heat and pressure movement trends during high-pressure piping tests; designed improvement for piping movement handling.</li>
         </ul>
-        <div class="timeline-tags">
-          <span class="tag">Pressure Testing</span>
-          <span class="tag">Engineering Analysis</span>
-        </div>
+        <div class="timeline-tags"><span class="tag">Pressure Testing</span><span class="tag">Engineering Analysis</span></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -468,61 +516,52 @@
     <h2 class="section-title">SKILLS</h2>
     <div class="section-line"></div>
   </div>
-  <div class="skills-grid fade-in">
-    <div class="skill-card">
+  <div class="skills-grid fade-in" id="skillsGrid">
+    <div class="glass" style="padding:1.5rem">
       <div class="skill-card-title">Audit &amp; Compliance</div>
       <div class="skill-list">
-        <div class="skill-item"><span>VDA 6.3 Auditing</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
-        <div class="skill-item"><span>VDA 2 / PPAP / PPA</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
-        <div class="skill-item"><span>IATF 16949</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-        <div class="skill-item"><span>Technical Cleanliness</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-        <div class="skill-item"><span>Requalification Mgmt.</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span>VDA 6.3 Auditing</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:95%"></div></div></div>
+        <div class="skill-item"><span>VDA 2 / PPAP / PPA</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:92%"></div></div></div>
+        <div class="skill-item"><span>IATF 16949</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+        <div class="skill-item"><span>Technical Cleanliness</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item"><span>Requalification Mgmt.</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="glass" style="padding:1.5rem">
       <div class="skill-card-title">Problem Solving</div>
       <div class="skill-list">
-        <div class="skill-item"><span>8D Methodology</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
-        <div class="skill-item"><span>DMAIC / Six Sigma</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-        <div class="skill-item"><span>5-Why / RCA</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:93%"></div></div></div>
-        <div class="skill-item"><span>PFMEA / FMEA</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:87%"></div></div></div>
-        <div class="skill-item"><span>SCAR / Escalation Mgmt.</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+        <div class="skill-item"><span>8D Methodology</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:95%"></div></div></div>
+        <div class="skill-item"><span>DMAIC / Six Sigma</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+        <div class="skill-item"><span>5-Why / RCA</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:93%"></div></div></div>
+        <div class="skill-item"><span>PFMEA / FMEA</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:87%"></div></div></div>
+        <div class="skill-item"><span>SCAR / Escalation Mgmt.</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:92%"></div></div></div>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="glass" style="padding:1.5rem">
       <div class="skill-card-title">Statistical &amp; Process</div>
       <div class="skill-list">
-        <div class="skill-item"><span>SPC / Cp / Cpk Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-        <div class="skill-item"><span>MSA / Gauge R&amp;R</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
-        <div class="skill-item"><span>DOE</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-        <div class="skill-item"><span>Yield Optimization</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:93%"></div></div></div>
-        <div class="skill-item"><span>Defect Reduction</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+        <div class="skill-item"><span>SPC / Cp / Cpk Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+        <div class="skill-item"><span>MSA / Gauge R&amp;R</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        <div class="skill-item"><span>DOE</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%"></div></div></div>
+        <div class="skill-item"><span>Yield Optimization</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:93%"></div></div></div>
+        <div class="skill-item"><span>Defect Reduction</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:95%"></div></div></div>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="glass" style="padding:1.5rem">
       <div class="skill-card-title">Leadership &amp; Tools</div>
       <div class="skill-list">
-        <div class="skill-item"><span>Excel / Tableau Dashboards</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-        <div class="skill-item"><span>Cross-functional Leadership</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:93%"></div></div></div>
-        <div class="skill-item"><span>Supplier Negotiation</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-        <div class="skill-item"><span>Executive Presentations</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-        <div class="skill-item"><span>Supplier Development</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+        <div class="skill-item"><span>Excel / Tableau Dashboards</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+        <div class="skill-item"><span>Cross-functional Leadership</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:93%"></div></div></div>
+        <div class="skill-item"><span>Supplier Negotiation</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+        <div class="skill-item"><span>Executive Presentations</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+        <div class="skill-item"><span>Creative Problem Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:97%"></div></div></div>
       </div>
     </div>
   </div>
   <div class="lang-grid">
-    <div class="lang-card">
-      <div class="lang-name">Indonesian</div>
-      <div class="lang-level">Native</div>
-    </div>
-    <div class="lang-card">
-      <div class="lang-name">English</div>
-      <div class="lang-level">Business Fluent</div>
-    </div>
-    <div class="lang-card">
-      <div class="lang-name">Hungarian</div>
-      <div class="lang-level">Currently Learning</div>
-    </div>
+    <div class="lang-card glass"><div class="lang-name">Indonesian</div><div class="lang-level">Native</div></div>
+    <div class="lang-card glass"><div class="lang-name">English</div><div class="lang-level">Business Fluent</div></div>
+    <div class="lang-card glass"><div class="lang-name">Hungarian</div><div class="lang-level">Currently Learning</div></div>
   </div>
 </section>
 
@@ -536,14 +575,14 @@
     <div class="section-line"></div>
   </div>
   <div class="edu-grid fade-in">
-    <div class="edu-card">
+    <div class="edu-card glass">
       <div class="edu-degree">Master of Business Administration</div>
       <div class="edu-school">Valar Institute (Quantic) &bull; USA</div>
       <div class="edu-year">January 2025 &mdash; April 2026</div>
       <div class="edu-score">Final Score: <strong>93.74%</strong></div>
       <div class="edu-badge">MBA</div>
     </div>
-    <div class="edu-card">
+    <div class="edu-card glass">
       <div class="edu-degree">Bachelor of Mechatronics Engineering</div>
       <div class="edu-school">State Polytechnic of Batam &bull; Indonesia</div>
       <div class="edu-year">June 2012 &mdash; October 2016</div>
@@ -584,49 +623,24 @@
       <div class="contact-badge">EU Blue Card Holder &mdash; Full EU Work Authorization</div>
     </div>
     <div class="contact-links">
-      <a href="mailto:shaquile.surya@gmail.com" class="contact-link">
-        <span class="contact-link-icon">&#9993;</span>
-        <span>shaquile.surya@gmail.com</span>
-      </a>
-      <a href="tel:+36305638207" class="contact-link">
-        <span class="contact-link-icon">&#128222;</span>
-        <span>+36 30 563 8207</span>
-      </a>
-      <a href="https://linkedin.com/in/shaquile-surya-86401b129" target="_blank" class="contact-link">
-        <span class="contact-link-icon">&#128101;</span>
-        <span>linkedin.com/in/shaquile-surya-86401b129</span>
-      </a>
+      <a href="mailto:shaquile.surya@gmail.com" class="contact-link glass"><span class="contact-link-icon">&#9993;</span><span>shaquile.surya@gmail.com</span></a>
+      <a href="tel:+36305638207" class="contact-link glass"><span class="contact-link-icon">&#128222;</span><span>+36 30 563 8207</span></a>
+      <a href="https://linkedin.com/in/shaquile-surya-86401b129" target="_blank" class="contact-link glass"><span class="contact-link-icon">&#128101;</span><span>linkedin.com/in/shaquile-surya-86401b129</span></a>
     </div>
   </div>
 </section>
 
-<footer>
-  Built with precision. &copy; <span id="year"></span> <span>Shaquile Surya</span>. All rights reserved.
-</footer>
+<footer>Built with precision across the stars. &copy; <span id="year"></span> <span>Shaquile Surya</span>. All rights reserved.</footer>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="certModal">
   <div class="modal">
     <div class="modal-title">ADD CERTIFICATION</div>
-    <div class="form-group">
-      <label class="form-label">Certification Name *</label>
-      <input class="form-input" id="certName" type="text" placeholder="e.g. VDA 6.3 Qualified Auditor">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Issuing Organization *</label>
-      <input class="form-input" id="certIssuer" type="text" placeholder="e.g. VDA QMC">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Issue Year / Date</label>
-      <input class="form-input" id="certDate" type="text" placeholder="e.g. 2025">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Expiry (optional)</label>
-      <input class="form-input" id="certExpiry" type="text" placeholder="e.g. 2028 or No Expiry">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Credential ID (optional)</label>
-      <input class="form-input" id="certId" type="text" placeholder="e.g. VDA-2025-XXXXX">
-    </div>
+    <div class="form-group"><label class="form-label">Certification Name *</label><input class="form-input" id="certName" type="text" placeholder="e.g. VDA 6.3 Qualified Auditor"></div>
+    <div class="form-group"><label class="form-label">Issuing Organization *</label><input class="form-input" id="certIssuer" type="text" placeholder="e.g. VDA QMC"></div>
+    <div class="form-group"><label class="form-label">Issue Year / Date</label><input class="form-input" id="certDate" type="text" placeholder="e.g. 2025"></div>
+    <div class="form-group"><label class="form-label">Expiry (optional)</label><input class="form-input" id="certExpiry" type="text" placeholder="e.g. 2028 or No Expiry"></div>
+    <div class="form-group"><label class="form-label">Credential ID (optional)</label><input class="form-input" id="certId" type="text" placeholder="e.g. VDA-2025-XXXXX"></div>
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
       <button class="btn btn-primary" onclick="saveCert()">Save</button>
@@ -635,8 +649,120 @@
 </div>
 
 <script>
+// YEAR
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// CUSTOM CURSOR
+const cur = document.getElementById('cursor');
+const curR = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
+function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; curR.style.left = rx + 'px'; curR.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+animRing();
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// STAR FIELD
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], mouse = {x: 0, y: 0};
+
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', () => { resize(); initStars(); });
+document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+function initStars() {
+  stars = [];
+  const count = Math.floor((W * H) / 4000);
+  for (let i = 0; i < count; i++) {
+    stars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.8 + 0.2,
+      speed: Math.random() * 0.4 + 0.05,
+      phase: Math.random() * Math.PI * 2,
+      color: Math.random() > 0.85 ? (Math.random() > 0.5 ? '#60a5fa' : '#a855f7') : '#ffffff',
+      parallax: Math.random() * 0.015 + 0.002
+    });
+  }
+}
+initStars();
+
+// Shooting stars
+let shooters = [];
+function spawnShooter() {
+  shooters.push({ x: Math.random() * W * 0.7, y: Math.random() * H * 0.5, len: Math.random() * 120 + 60, speed: Math.random() * 8 + 6, angle: Math.PI / 4 + (Math.random() - 0.5) * 0.4, life: 1 });
+  setTimeout(spawnShooter, Math.random() * 5000 + 3000);
+}
+setTimeout(spawnShooter, 2000);
+
+let t = 0;
+function drawStars() {
+  ctx.clearRect(0, 0, W, H);
+  t += 0.008;
+  const cx = W / 2, cy = H / 2;
+  const dx = (mouse.x - cx) / cx, dy = (mouse.y - cy) / cy;
+
+  stars.forEach(s => {
+    const px = s.x + dx * s.parallax * 80;
+    const py = s.y + dy * s.parallax * 80;
+    const opacity = 0.4 + 0.6 * Math.abs(Math.sin(t * s.speed + s.phase));
+    ctx.beginPath();
+    ctx.arc(px, py, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = s.color === '#ffffff' ? `rgba(255,255,255,${opacity})` :
+      s.color === '#60a5fa' ? `rgba(96,165,250,${opacity})` : `rgba(168,85,247,${opacity})`;
+    ctx.fill();
+    // Glow for bigger stars
+    if (s.r > 1.2) {
+      ctx.beginPath();
+      ctx.arc(px, py, s.r * 3, 0, Math.PI * 2);
+      const grad = ctx.createRadialGradient(px, py, 0, px, py, s.r * 3);
+      grad.addColorStop(0, s.color === '#ffffff' ? `rgba(255,255,255,${opacity * 0.15})` : `rgba(96,165,250,${opacity * 0.1})`);
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+  });
+
+  // Draw shooting stars
+  shooters = shooters.filter(s => s.life > 0);
+  shooters.forEach(s => {
+    s.x += Math.cos(s.angle) * s.speed;
+    s.y += Math.sin(s.angle) * s.speed;
+    s.life -= 0.018;
+    const alpha = s.life;
+    const tx = s.x - Math.cos(s.angle) * s.len;
+    const ty = s.y - Math.sin(s.angle) * s.len;
+    const grad = ctx.createLinearGradient(tx, ty, s.x, s.y);
+    grad.addColorStop(0, 'transparent');
+    grad.addColorStop(1, `rgba(255,255,255,${alpha})`);
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(s.x, s.y);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
+// SKILL BARS ANIMATE ON SCROLL
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar').forEach(bar => bar.classList.add('animate'));
+      skillObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.getElementById('skillsGrid') && skillObserver.observe(document.getElementById('skillsGrid'));
+
+// CERTIFICATIONS
 const STORE_KEY = 'shaquile_certs_v4';
 
 function getDefaultCerts() {
@@ -679,7 +805,7 @@ function renderCerts() {
     return;
   }
   grid.innerHTML = certs.map(c => `
-    <div class="cert-card">
+    <div class="cert-card glass">
       <div class="cert-card-top">
         <div class="cert-name">${esc(c.name)}</div>
         <button class="cert-delete" onclick="deleteCert(${c.id})" title="Remove">&times;</button>
@@ -706,37 +832,23 @@ function openAddModal() {
   document.getElementById('certModal').classList.add('active');
 }
 
-function closeModal() {
-  document.getElementById('certModal').classList.remove('active');
-}
+function closeModal() { document.getElementById('certModal').classList.remove('active'); }
 
 function saveCert() {
   const name = document.getElementById('certName').value.trim();
   const issuer = document.getElementById('certIssuer').value.trim();
   if (!name || !issuer) { alert('Name and Issuing Organization are required.'); return; }
-  const cert = {
-    id: Date.now(),
-    name, issuer,
-    date: document.getElementById('certDate').value.trim(),
-    expiry: document.getElementById('certExpiry').value.trim(),
-    credId: document.getElementById('certId').value.trim()
-  };
-  const certs = loadCerts();
-  certs.push(cert);
-  saveCerts(certs);
-  renderCerts();
-  closeModal();
+  const cert = { id: Date.now(), name, issuer, date: document.getElementById('certDate').value.trim(), expiry: document.getElementById('certExpiry').value.trim(), credId: document.getElementById('certId').value.trim(), pdf: '' };
+  const certs = loadCerts(); certs.push(cert); saveCerts(certs); renderCerts(); closeModal();
 }
 
-document.getElementById('certModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
+document.getElementById('certModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 renderCerts();
 
-const observer = new IntersectionObserver((entries) => {
+// FADE IN ON SCROLL
+const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
+}, { threshold: 0.07 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
