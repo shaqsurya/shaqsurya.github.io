@@ -126,6 +126,16 @@ section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
 .glass { background: var(--bg-glass); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 8px; transition: border-color 0.3s, box-shadow 0.3s; }
 .glass:hover { border-color: var(--border-blue); box-shadow: 0 0 25px rgba(96,165,250,0.06), inset 0 0 25px rgba(96,165,250,0.02); }
 
+/* CORE COMPETENCIES */
+.competencies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.comp-card { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s; }
+.comp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(96,165,250,0.08); border-color: var(--border-blue); }
+.comp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--blue-dim), var(--purple)); opacity: 0; transition: opacity 0.3s; }
+.comp-card:hover::before { opacity: 1; }
+.comp-icon { font-size: 22px; line-height: 1; }
+.comp-title { font-family: var(--font-tech); font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
+.comp-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
 /* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.95; }
@@ -285,6 +295,7 @@ body.admin-unlocked .cert-delete { display: inline-block; }
 <nav id="navbar">
   <div class="nav-logo">&#9733; SS  -  Portfolio</div>
   <ul class="nav-links">
+    <li><a href="#competencies">Competencies</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -335,8 +346,52 @@ body.admin-unlocked .cert-delete { display: inline-block; }
     <a href="mailto:shaquile.surya@gmail.com" class="btn btn-primary">Get in Touch</a>
     <a href="https://linkedin.com/in/shaquile-surya-86401b129" target="_blank" class="btn btn-ghost">LinkedIn</a>
     <a href="javascript:window.print()" class="btn btn-ghost">Print Resume</a>
+    <a href="https://shaqsurya.github.io/Shaquile_Surya_Resume.pdf" target="_blank" download class="btn btn-ghost">&#8595; Download CV</a>
   </div>
 </div>
+
+<div class="section-divider"></div>
+
+<!-- CORE COMPETENCIES -->
+<section id="competencies">
+  <div class="section-header fade-in">
+    <span class="section-num">00</span>
+    <h2 class="section-title">CORE COMPETENCIES</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="competencies-grid fade-in">
+    <div class="comp-card glass">
+      <div class="comp-icon">&#128269;</div>
+      <div class="comp-title">Supplier Quality Governance</div>
+      <div class="comp-desc">Supplier development, escalation and containment management across multi-country portfolios</div>
+    </div>
+    <div class="comp-card glass">
+      <div class="comp-icon">&#10003;</div>
+      <div class="comp-title">Audit &amp; Compliance</div>
+      <div class="comp-desc">VDA 6.3 / VDA 2 / IATF 16949 audits, PPAP/PPA, requalification, and compliance management</div>
+    </div>
+    <div class="comp-card glass">
+      <div class="comp-icon">&#128200;</div>
+      <div class="comp-title">Structured Problem Solving</div>
+      <div class="comp-desc">8D, DMAIC, 5-Why with statistical methods: SPC, Cp/Cpk trend analysis</div>
+    </div>
+    <div class="comp-card glass">
+      <div class="comp-icon">&#127775;</div>
+      <div class="comp-title">Cross-Functional Leadership</div>
+      <div class="comp-desc">Leading across Quality, Engineering, Production, Procurement, and R&amp;D teams globally</div>
+    </div>
+    <div class="comp-card glass">
+      <div class="comp-icon">&#9881;</div>
+      <div class="comp-title">Process Optimization</div>
+      <div class="comp-desc">Defect reduction, yield improvement, cycle-time improvement, and process standardization</div>
+    </div>
+    <div class="comp-card glass">
+      <div class="comp-icon">&#128162;</div>
+      <div class="comp-title">Technical Cleanliness</div>
+      <div class="comp-desc">Raw materials and packaging standards deployment and international supplier alignment</div>
+    </div>
+  </div>
+</section>
 
 <div class="section-divider"></div>
 
@@ -509,10 +564,11 @@ body.admin-unlocked .cert-delete { display: inline-block; }
         <div class="timeline-role">Product Development Assurance Engineer</div>
         <div class="timeline-company">Shimano &bull; Indonesia</div>
         <ul class="timeline-desc">
-          <li>Managed NPI quality activities from Design Introduction to Mass Production; coordinated audits and issue resolution.</li>
-          <li>Developed and trained operators for NPI stability; achieved 90% yield target.</li>
+          <li>Managed NPI quality activities from Design Introduction to Mass Production; coordinated cross-functional audits and issue resolution across engineering and production teams.</li>
+          <li>Developed operator training programs for NPI production stability; ramped up line to achieve 90% yield target ahead of schedule.</li>
+          <li>Established quality checkpoints across the NPI phase gate process to catch defects before mass production escalation.</li>
         </ul>
-        <div class="timeline-tags"><span class="tag">NPI Quality</span><span class="tag">Audit Coordination</span><span class="tag">Operator Training</span></div>
+        <div class="timeline-tags"><span class="tag">NPI Quality</span><span class="tag">Audit Coordination</span><span class="tag">Operator Training</span><span class="tag">Phase Gate Reviews</span></div>
       </div>
     </div>
 
@@ -523,9 +579,11 @@ body.admin-unlocked .cert-delete { display: inline-block; }
         <div class="timeline-role">Piping Test Engineering Intern</div>
         <div class="timeline-company">Vallourec Asia Pacific Corp &bull; Indonesia</div>
         <ul class="timeline-desc">
-          <li>Analyzed heat and pressure movement trends during high-pressure piping tests; designed improvement for piping movement handling.</li>
+          <li>Analyzed heat and pressure movement trends during high-pressure piping tests; identified anomalies and designed a handling improvement that reduced pipe movement risk.</li>
+          <li>Built structured data tracking tools to visualize test trends across multiple test cycles, enabling faster pattern recognition for the engineering team.</li>
+          <li>Applied engineering fundamentals under real industrial conditions as a final-year placement, forming the foundation of a data-driven, precision-first work style.</li>
         </ul>
-        <div class="timeline-tags"><span class="tag">Pressure Testing</span><span class="tag">Engineering Analysis</span></div>
+        <div class="timeline-tags"><span class="tag">Pressure Testing</span><span class="tag">Engineering Analysis</span><span class="tag">Data Tracking</span><span class="tag">Industrial Testing</span></div>
       </div>
     </div>
   </div>
