@@ -250,6 +250,21 @@ footer span { color: var(--gold); }
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.visible { opacity: 1; transform: none; }
 
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.project-card { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s; }
+.project-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(96,165,250,0.08); border-color: var(--border-blue); }
+.project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--purple), var(--blue)); opacity: 0; transition: opacity 0.3s; }
+.project-card:hover::before { opacity: 1; }
+.project-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.project-icon { font-size: 24px; line-height: 1; }
+.project-status { font-family: var(--font-tech); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; font-weight: 500; }
+.status-live { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); color: #4ade80; }
+.status-wip { background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold); }
+.project-title { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; color: var(--text); line-height: 1.1; }
+.project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+
 /* ADMIN MODE */
 .cert-toolbar { display: none; }
 .cert-delete { display: none; }
@@ -301,6 +316,7 @@ body.admin-unlocked .cert-delete { display: inline-block; }
     <li><a href="#skills">Skills</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#certifications">Certs</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -408,6 +424,7 @@ body.admin-unlocked .cert-delete { display: inline-block; }
       <p>I applied for and secured a role <strong>two grade levels above my current position</strong> to join Infineon Hungary  -  a cross-country, cross-functional leap validated entirely on merit. Within the first year, I delivered <strong>zero FAR, zero line disturbances</strong>, and double-digit VDA 6.3 audit score improvements.</p>
       <p>Beyond technical credentials, I am a <strong>deeply creative and unconventional thinker</strong>. I have a habit of building tools and approaches that colleagues initially find weird, doubt, or outright laugh at  -  only for them to actually work and drive real, measurable results. That mindset earned me <strong>7 consecutive SGA Championship awards</strong> at Excelitas, VP-level recognition, and an industry-first supplier engagement method at Infineon that nobody had tried before.</p>
       <p>I was also the <strong>youngest engineer in company history to reach Engineer Grade II</strong> (promoted in just 1.5 years, 2018) and again the <strong>youngest to reach Engineer Grade III</strong> (2021)  -  achievements built on consistent performance under pressure, not tenure. <strong>MBA graduate at 93.74%</strong>, combining engineering precision with strategic quality leadership.</p>
+      <p>Outside of supplier quality, I actively apply <strong>prompt engineering and AI tools</strong> to build things that make work faster and smarter  -  from supplier monitoring dashboards to PDF processing tools. The same creative, unconventional mindset that wins SGA Championships also builds tools nobody expected to work.</p>
       <p>And yes, the space theme here is personal. I have been <strong>fascinated by space exploration</strong> since childhood  -  the scale of it, the ambition, the engineering behind it. One of my genuine long-term dreams is to <strong>work for a space company</strong>: applying precision engineering and quality systems to the most demanding and meaningful frontier humanity has ever pursued. The standards required for aerospace make automotive quality look like a warm-up lap.</p>
     </div>
     <div class="about-details">
@@ -460,7 +477,7 @@ body.admin-unlocked .cert-delete { display: inline-block; }
       <div class="timeline-dot"></div>
       <div class="timeline-content">
         <div class="timeline-role">Supplier Quality Manager</div>
-        <div class="timeline-company">Infineon Technologies &bull; Cegléd, Hungary</div>
+        <div class="timeline-company">Infineon Technologies &bull; Budapest, Hungary</div>
         <div class="timeline-scope">Plastic Housing and Lid | Audits, Escalations, PPAP/PPA, Risk Assessments | 5 Key Suppliers across Germany, Romania, Czech Republic, and Austria</div>
         <ul class="timeline-desc">
           <li>Led supplier quality governance, audits, escalations, and supplier development across a 4-country supplier portfolio to protect production stability and customer deliveries.</li>
@@ -640,6 +657,17 @@ body.admin-unlocked .cert-delete { display: inline-block; }
       </div>
     </div>
   </div>
+  <div class="glass" style="padding:1.5rem;margin-top:1.5rem">
+    <div class="skill-card-title">AI &amp; Prompt Engineering</div>
+    <div class="skill-list">
+      <div class="skill-item"><span>Prompt Engineering</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+      <div class="skill-item"><span>AI-Assisted Reporting</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+      <div class="skill-item"><span>Workflow Automation</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+      <div class="skill-item"><span>Data Visualization Tools</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:87%"></div></div></div>
+      <div class="skill-item"><span>Tool Development</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+    </div>
+  </div>
+
   <div class="lang-grid">
     <div class="lang-card glass"><div class="lang-name">Indonesian</div><div class="lang-level">Native</div></div>
     <div class="lang-card glass"><div class="lang-name">English</div><div class="lang-level">Business Fluent</div></div>
@@ -688,6 +716,65 @@ body.admin-unlocked .cert-delete { display: inline-block; }
     <button class="btn btn-primary" onclick="openAddModal()">+ Add Certification</button>
   </div>
   <div class="cert-grid fade-in" id="certGrid"></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <span class="section-num">05.5</span>
+    <h2 class="section-title">PROJECTS</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="fade-in" style="color:var(--text-muted);font-size:1rem;line-height:1.9;max-width:720px;margin-bottom:3rem;">Beyond the day job, I apply <strong style="color:var(--text)">prompt engineering and AI</strong> to build tools that actually solve real problems - supplier dashboards, PDF workflows, and things people raise an eyebrow at until they see them working. Currently also venturing into solo game development because apparently the workload was not enough.</p>
+  <div class="projects-grid fade-in">
+
+    <div class="project-card glass">
+      <div class="project-header">
+        <span class="project-icon">&#128200;</span>
+        <span class="project-status status-live">Live</span>
+      </div>
+      <div class="project-title">Material Performance Overview</div>
+      <div class="project-desc">AI-assisted supplier monitoring dashboard with detailed visual analytics built to support quality decision-making. Tracks material performance KPIs, highlights risk signals, and generates structured reports - reducing manual analysis time significantly across the supplier portfolio.</div>
+      <div class="project-tags">
+        <span class="tag tag-blue">AI-Assisted</span>
+        <span class="tag tag-blue">Data Visualization</span>
+        <span class="tag">Supplier Quality</span>
+        <span class="tag">Excel / Tableau</span>
+      </div>
+    </div>
+
+    <div class="project-card glass">
+      <div class="project-header">
+        <span class="project-icon">&#128196;</span>
+        <span class="project-status status-live">Live</span>
+      </div>
+      <div class="project-title">Premium PDF Editor Lite</div>
+      <div class="project-desc">Browser-based PDF processing tool built for faster professional document handling without heavy software. Handles editing, annotation, and restructuring of technical documents - designed specifically to streamline supplier quality documentation workflows.</div>
+      <div class="project-tags">
+        <span class="tag tag-blue">Browser-Based</span>
+        <span class="tag tag-blue">Prompt Engineering</span>
+        <span class="tag">Workflow Automation</span>
+        <span class="tag">PDF Processing</span>
+      </div>
+    </div>
+
+    <div class="project-card glass">
+      <div class="project-header">
+        <span class="project-icon">&#127918;</span>
+        <span class="project-status status-wip">In Development</span>
+      </div>
+      <div class="project-title">Shooter Game (Solo Dev)</div>
+      <div class="project-desc">Independent game development project built from the ground up as a solo developer. Combining creative direction, game design, and technical execution in one person - because apparently the best way to unwind from quality engineering is to build something else entirely from scratch.</div>
+      <div class="project-tags">
+        <span class="tag tag-gold">Solo Development</span>
+        <span class="tag">Game Design</span>
+        <span class="tag">Creative Direction</span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <div class="section-divider"></div>
