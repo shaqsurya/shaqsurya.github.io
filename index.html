@@ -929,8 +929,8 @@ const skillObserver = new IntersectionObserver(entries => {
       skillObserver.unobserve(e.target);
     }
   });
-}, { threshold: 0.2 });
-document.getElementById('skillsGrid') && skillObserver.observe(document.getElementById('skillsGrid'));
+}, { threshold: 0.15 });
+document.getElementById('skills') && skillObserver.observe(document.getElementById('skills'));
 
 // CERTIFICATIONS
 const STORE_KEY = 'shaquile_certs_v4';
