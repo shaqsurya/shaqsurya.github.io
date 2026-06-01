@@ -261,6 +261,8 @@ footer span { color: var(--gold); }
 .project-status { font-family: var(--font-tech); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; font-weight: 500; }
 .status-live { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); color: #4ade80; }
 .status-wip { background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold); }
+.status-store { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; }
+.status-store { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; }
 .project-title { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; color: var(--text); line-height: 1.1; }
 .project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
@@ -737,7 +739,7 @@ body.admin-unlocked .cert-delete { display: inline-block; }
     <h2 class="section-title">PROJECTS</h2>
     <div class="section-line"></div>
   </div>
-  <p class="fade-in" style="color:var(--text-muted);font-size:1rem;line-height:1.9;max-width:720px;margin-bottom:3rem;">Beyond the day job, I apply <strong style="color:var(--text)">prompt engineering and AI</strong> to build tools that actually solve real problems - supplier dashboards, PDF workflows, and things people raise an eyebrow at until they see them working. Currently also venturing into solo game development because apparently the workload was not enough.</p>
+  <p class="fade-in" style="color:var(--text-muted);font-size:1rem;line-height:1.9;max-width:720px;margin-bottom:3rem;">Beyond the day job, I apply <strong style="color:var(--text)">prompt engineering and AI</strong> to build tools that actually solve real problems - supplier dashboards, PDF workflows, and Android apps. I also develop games solo because apparently the workload was not enough. Two Android apps are currently heading to the Play Store, and a shooter game is in active development.</p>
   <div class="projects-grid fade-in">
 
     <div class="project-card glass">
@@ -783,6 +785,36 @@ body.admin-unlocked .cert-delete { display: inline-block; }
         <span class="tag">Game Design</span>
         <span class="tag">Creative Direction</span>
         <span class="tag">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="project-card glass">
+      <div class="project-header">
+        <span class="project-icon">&#128664;</span>
+        <span class="project-status status-store">Play Store Soon</span>
+      </div>
+      <div class="project-title">Commute Waste Tracker</div>
+      <div class="project-desc">Android app that tracks how much time and money you are silently losing to daily commuting. Log your trips, visualize the real cost of your commute over weeks and months, and make data-driven decisions about your transport habits - because the numbers are usually worse than you think.</div>
+      <div class="project-tags">
+        <span class="tag tag-blue">Android</span>
+        <span class="tag tag-blue">Mobile Dev</span>
+        <span class="tag">Personal Finance</span>
+        <span class="tag">Data Tracking</span>
+      </div>
+    </div>
+
+    <div class="project-card glass">
+      <div class="project-header">
+        <span class="project-icon">&#128197;</span>
+        <span class="project-status status-store">Play Store Soon</span>
+      </div>
+      <div class="project-title">Guardian Expiry Document</div>
+      <div class="project-desc">Android app that reminds you before your important documents expire - passports, permits, visas, insurance, licenses, and anything else with a deadline. As someone who has navigated document requirements across multiple countries, the pain of nearly missing an expiry date is very real and very avoidable.</div>
+      <div class="project-tags">
+        <span class="tag tag-blue">Android</span>
+        <span class="tag tag-blue">Mobile Dev</span>
+        <span class="tag">Productivity</span>
+        <span class="tag">Document Management</span>
       </div>
     </div>
 
