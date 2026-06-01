@@ -163,7 +163,7 @@ endobj
 endobj
 16 0 obj
 <<
-/Length 3005
+/Length 2905
 >>
 stream
 q
@@ -287,13 +287,8 @@ BT
 ET
 0.1 0.1 0.1 rg
 BT
-1 0 0 1 62.6 526.2 Tm
-(\055 Software development and solo game development \050Godot 4\051\072 building browser\055based tools and an) Tj
-T*
-ET
-BT
-1 0 0 1 62.6 514.2 Tm
-(  independent shooter game as active personal projects\056) Tj
+1 0 0 1 56.8 526.2 Tm
+(\055 Software developer and solo game developer\073 independent shooter game currently in development\056) Tj
 T*
 ET
 Q
@@ -329,7 +324,7 @@ xref
 0000007671 00000 n 
 0000007926 00000 n 
 0000008114 00000 n 
-0000011172 00000 n 
+0000011072 00000 n 
 trailer
 <<
 /Size 18
@@ -337,5 +332,5 @@ trailer
 /Info 1 0 R
 >>
 startxref
-11280
+11180
 %%EOF
